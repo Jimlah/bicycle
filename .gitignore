@@ -2,6 +2,10 @@ node_modules/
 build/node_modules/
 *.log
 .DS_Store
+
+# the page ships one file; the previews are the only images in the repo
 *.png
-!build/docs/*.png
+!docs/previews/*.png
+
+# the same file under its working name, kept out of the published tree
 bicycle.html
