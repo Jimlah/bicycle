@@ -75,6 +75,7 @@ node parts/wheels.mjs     # one assembly, with a PNG and a mass table
 node pack.mjs             # every part, tessellated, quantised and packed into ../index.html
 node previews.mjs         # the screenshots in this README
 node test-ride.mjs        # rides it in headless Chrome and prints speed, brake and steer
+node live-check.mjs       # opens the published page and checks it still loads clean
 ```
 
 `pack.mjs` prints the part count, the triangle count and the packed size. It takes about six
