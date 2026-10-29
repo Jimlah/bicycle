@@ -1,0 +1,7 @@
+node_modules/
+build/node_modules/
+*.log
+.DS_Store
+*.png
+!build/docs/*.png
+bicycle.html

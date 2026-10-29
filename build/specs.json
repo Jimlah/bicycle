@@ -1,0 +1,256 @@
+{
+  "bike": {
+    "style": "modern road bike",
+    "size": "56 cm"
+  },
+  "geometry": {
+    "wheelbase": 983,
+    "chainstay_length": 410,
+    "front_center": 583,
+    "bb_drop": 70,
+    "seat_tube_angle": 73.3,
+    "head_tube_angle": 73.5,
+    "seat_tube_length_ct": 533,
+    "top_tube_effective": 560,
+    "top_tube_actual": 544,
+    "head_tube_length": 170,
+    "fork_axle_to_crown": 371,
+    "fork_rake_offset": 40,
+    "trail": 58,
+    "standover": 767,
+    "stack": 577,
+    "reach": 387
+  },
+  "wheels": {
+    "size": "700c",
+    "etrto_bead_seat_diameter": 622,
+    "tire_width": 25,
+    "tire_outer_diameter": 672,
+    "rim_outer_width": 24,
+    "rim_inner_width": 20,
+    "rim_depth": 23,
+    "spoke_count_front": 32,
+    "spoke_count_rear": 32,
+    "spoke_lacing": "3-cross",
+    "spoke_diameter": 2.0,
+    "hub_axle_diameter_front": 9,
+    "hub_axle_diameter_rear": 10,
+    "hub_over_locknut_front": 100,
+    "hub_over_locknut_rear": 130,
+    "hub_flange_diameter_front": 38,
+    "hub_flange_diameter_rear": 44.5,
+    "hub_flange_spacing_front": 35.8,
+    "hub_flange_spacing_rear_drive": 18.7,
+    "hub_flange_spacing_rear_nondrive": 38.2
+  },
+  "drivetrain": {
+    "chainring_teeth": [50, 34],
+    "crank_length": 172.5,
+    "chain_pitch": 12.7,
+    "chain_roller_diameter": 7.75,
+    "chain_inner_width": 2.38,
+    "chain_links": 116,
+    "cassette_teeth": [11, 12, 13, 14, 15, 17, 19, 22, 25, 28, 32],
+    "bb_shell_width": 68,
+    "bb_shell_diameter": 34.8,
+    "bb_spindle_diameter": 24,
+    "rear_derailleur": "11-speed",
+    "front_derailleur": "2x braze-on"
+  },
+  "cockpit": {
+    "handlebar_width": 420,
+    "handlebar_drop": 128,
+    "handlebar_reach": 80,
+    "stem_length": 100,
+    "stem_angle": 6,
+    "steerer_diameter": 28.6,
+    "seatpost_diameter": 27.2,
+    "saddle_length": 270,
+    "saddle_width": 143,
+    "brake_type": "dual-pivot rim"
+  },
+  "sources": [
+    {
+      "claim": "frame geometry row, 56 cm (seat tube, angles, head tube, TT, BB drop, chainstay, rake, trail, wheelbase, standover, stack, reach)",
+      "value": "ST 533; STA 73.3 deg; HT 170; HTA 73.5 deg; TT_eff 560; BB drop 70; CS 410; rake 40; trail 58; WB 983; standover 767; reach 387; stack 577",
+      "url": "https://www.trekbikes.com/us/en_US/bikes/road-bikes/performance-road-bikes/%C3%A9monda/%C3%A9monda-sl/%C3%A9monda-sl-frameset/p/17267/",
+      "note": "Primary source: Trek Emonda SL frameset geometry chart (H2 fit), 56 cm column, all values in cm on the page and converted to mm."
+    },
+    {
+      "claim": "frame geometry row - independent cross-check (wheelbase, chainstay, front centre, BB drop, angles, rake, trail)",
+      "value": "WB 983; CS 410; front centre 583; BB drop 70; HTA 73.5 deg; STA 73.3 deg; rake 40; trail 58.7",
+      "url": "https://bikeinsights.com/bikes/61074027222683001c182862-trek-bikes-emonda?version=2023&build=sl-5-6-7",
+      "note": "Bike Insights' independently computed 56 cm Emonda SL model agrees with the Trek chart on every handling number, including front centre 583 (Trek does not publish front centre)."
+    },
+    {
+      "claim": "stack / reach - second source disagrees by model year",
+      "value": "2023 disc frame 56 cm: stack 563, reach 391, head tube 151 (vs 577 / 387 / 170 on the rim-brake frame modelled here)",
+      "url": "https://bikeinsights.com/bikes/61074027222683001c182862-trek-bikes-emonda?version=2023&build=sl-5-6-7",
+      "note": "Disagreement is a generation change, not an error. The model uses the rim-brake frame row (stack 577, reach 387, HT 170), which matches the rim-brake / 11-speed / 100-130 mm QR parts spec. Both values recorded."
+    },
+    {
+      "claim": "ETRTO bead seat diameter 622 for 700c; ISO 5775 designation 25-622",
+      "value": "622",
+      "url": "https://en.wikipedia.org/wiki/Bicycle_wheel",
+      "note": "700C = ISO 622 mm bead seat diameter. A 25 mm tyre is designated 25-622."
+    },
+    {
+      "claim": "rim widths and depth (aluminium road clincher)",
+      "value": "outer 24; inner 20; height 23",
+      "url": "https://www.dtswiss.com/en/wheels/wheels-road/performance/pr-1600-spline",
+      "note": "DT Swiss PR 1600 SPLINE db 23 published rim data (outer width 24 mm, inner width 20 mm, rim height 23 mm). Same 23 mm section as the rim-brake RR 511; build uses a rim-brake rim of this section."
+    },
+    {
+      "claim": "spoke count and lacing",
+      "value": "32 / 32, 3-cross",
+      "url": "https://en.wikipedia.org/wiki/Bicycle_wheel",
+      "note": "Conventional 32-spoke wheels are most commonly built cross-3; a handbuilt 32/32 three-cross wheel is the standard road build."
+    },
+    {
+      "claim": "spoke diameter 2.0 mm (14 g)",
+      "value": "2.0",
+      "url": "https://en.wikipedia.org/wiki/Bicycle_wheel",
+      "note": "Typical value: 14-gauge (2.0 mm) stainless J-bend spoke, the default for a 32-spoke handbuilt road wheel."
+    },
+    {
+      "claim": "hub over-locknut dimensions and axle diameters",
+      "value": "OLD 100 front / 130 rear; axle 9 front / 10 rear (quick release)",
+      "url": "https://en.wikipedia.org/wiki/Bicycle_wheel",
+      "note": "Front hubs are 100 mm, road rear hubs 130 mm; QR hub axles are 9 mm front / 10 mm rear."
+    },
+    {
+      "claim": "front hub flange geometry",
+      "value": "OLD 100; flange distance 71.6; offset 0; PCD 38/38; flange dia 48.4",
+      "url": "https://bike.shimano.com/en-NZ/products/components/pdp.P-HB-R7000.html",
+      "note": "Shimano HB-R7000 (105 rim brake, QR, 32H/36H). hub_flange_diameter_front = 38 is the spoke-hole PCD; the flange outside diameter is 48.4. Spacing 35.8 = 71.6/2 (symmetric)."
+    },
+    {
+      "claim": "rear hub flange geometry",
+      "value": "OLD 130; flange distance 56.9; offset 9.75; PCD 44/45; flange dia 52.8/53.8",
+      "url": "https://bike.shimano.com/en-NZ/products/components/pdp.P-FH-R7000.html",
+      "note": "Shimano FH-R7000 (105, 11-speed, QR, 32H/36H). Drive side = 56.9/2 - 9.75 = 18.7; non-drive = 56.9/2 + 9.75 = 38.2. Flange diameter 44.5 = mean of PCD 44/45 (OD 52.8/53.8)."
+    },
+    {
+      "claim": "chainring teeth and crank length",
+      "value": "50-34T; 172.5 mm; chainline 43.5",
+      "url": "https://productinfo.shimano.com/en/product/FC-R7000",
+      "note": "Shimano 105 FC-R7000 compact, 172.5 mm arm available."
+    },
+    {
+      "claim": "chain pitch, roller diameter, inner width",
+      "value": "pitch 12.7; roller 7.75; inner width 2.38 (3/32 in)",
+      "url": "https://en.wikipedia.org/wiki/Bicycle_chain",
+      "note": "Pitch 1/2 in = 12.7 mm (ANSI #40 / ISO 606 #8); 3/32 in = 2.38 mm inner width for derailleur chains. ANSI #40 nominal roller is 5/16 in (7.94 mm); derailleur chains are drawn at 7.75 mm, the value modelled here."
+    },
+    {
+      "claim": "chain length",
+      "value": "116 links",
+      "url": "https://www.decathlon.ie/p/mp/shimano-105-r7000-11-speed-cn-hg601-chain-116-links/d54ab083-cc04-4d59-a985-65a3820e34e7/c251",
+      "note": "Shimano CN-HG601-11 is supplied as a 116-link chain; 116 links is the standard length for a 50-34 / 11-32 road drivetrain."
+    },
+    {
+      "claim": "cassette tooth sequence 11-32, 11-speed",
+      "value": "11,12,13,14,15,17,19,22,25,28,32",
+      "url": "https://www.sram.com/en/sram/models/CS-PG-1170-A1",
+      "note": "SRAM PG-1170 11-32 (SRAM published cog sizes). The draft list in the brief (...,21,24,...) matches no production cassette; replaced with SRAM's published 11-32 set."
+    },
+    {
+      "claim": "bottom bracket shell and spindle",
+      "value": "68 mm wide; 34.8 mm thread diameter (1.37 in x 24 tpi); 24 mm spindle",
+      "url": "https://www.parktool.com/en-us/blog/repair-help/bottom-bracket-standards-and-terminology",
+      "note": "English/BSA threaded shell: 1.37 in x 24 tpi ~ 34.8 mm thread diameter, shell bore ~33.7 mm, 68 mm width; 24 mm spindle = Shimano Hollowtech II. Note: the Emonda donor frame uses Trek BB90 (90.5 mm press-fit) - model the shell as BSA 68 per this spec, or switch to BB90 to match the frame exactly."
+    },
+    {
+      "claim": "front derailleur mount and speeds",
+      "value": "2x11, braze-on (FD-R7000-F)",
+      "url": "https://bike.shimano.com/en-NZ/products/components/pdp.P-FD-R7000-F.html",
+      "note": "Shimano 105 FD-R7000-F, braze-on, 2x11."
+    },
+    {
+      "claim": "rear derailleur",
+      "value": "11-speed (RD-R7000)",
+      "url": "https://productinfo.shimano.com/en/product/RD-R7000",
+      "note": "Shimano 105 RD-R7000, 11-speed, max 34T."
+    },
+    {
+      "claim": "brake type",
+      "value": "dual-pivot rim caliper (BR-R7000)",
+      "url": "https://bike.shimano.com/en-UK/products/components/pdp.P-BR-R7000.html",
+      "note": "Shimano 105 BR-R7000 dual-pivot, 28C tyre clearance."
+    },
+    {
+      "claim": "handlebar width / drop / reach",
+      "value": "420 mm; drop 128; reach 80",
+      "url": "https://bikable.com/parts/handlebars/road-handlebars/alu-handlebars/zipp-service-course-sl-80-handlebar-420-mm-matte-black",
+      "note": "Zipp Service Course SL-80, 420 mm, 80 mm reach, 128 mm drop. Some Zipp literature quotes a 125 mm drop for the same bar - 128 mm used."
+    },
+    {
+      "claim": "stem length and angle",
+      "value": "100 mm, +/-6 deg",
+      "url": "https://www.sram.com/en/service/models/st-sc-sl-b2",
+      "note": "Zipp Service Course SL stem, 7075 aluminium, +/-6 deg, 100 mm."
+    },
+    {
+      "claim": "steerer diameter",
+      "value": "28.6 (1-1/8 in)",
+      "url": "https://www.trekbikes.com/us/en_US/bikes/road-bikes/performance-road-bikes/%C3%A9monda/%C3%A9monda-sl/%C3%A9monda-sl-frameset/p/17267/",
+      "note": "Emonda uses an E2 tapered headset, 1-1/8 in top / 1.5 in bottom; the steerer at the stem clamp is 28.6 mm."
+    },
+    {
+      "claim": "seatpost diameter",
+      "value": "27.2",
+      "url": "https://www.trekbikes.com/us/en_US/bikes/road-bikes/performance-road-bikes/%C3%A9monda/%C3%A9monda-sl/%C3%A9monda-sl-frameset/p/17267/",
+      "note": "Spec value: 27.2 mm round post. The Emonda donor frame uses a Ride Tuned seatmast, so a round 27.2 mm seat tube/seatpost interface must be modelled per this spec."
+    },
+    {
+      "claim": "saddle dimensions",
+      "value": "270 mm long x 143 mm wide",
+      "url": "https://www.performancebike.com/selle-san-marco-sportive-saddle-black-steel-rails-s1-143mm-068cs001/p1575023",
+      "note": "Selle San Marco Sportive, S1 size: 270 mm length, 143 mm width."
+    }
+  ],
+  "derived": [
+    {
+      "field": "front_center",
+      "value": 583.2,
+      "formula": "sqrt((wheelbase - sqrt(chainstay^2 - bb_drop^2))^2 + bb_drop^2) = sqrt((983 - 403.98)^2 + 70^2) = 583.2",
+      "note": "Independently reproduced by Bike Insights (583 mm)."
+    },
+    {
+      "field": "trail",
+      "value": 57.8,
+      "formula": "trail = (R_tire*cos(head_angle) - rake)/sin(head_angle), R_tire = tire_outer_diameter/2 = 336: (336*cos73.5 - 40)/sin73.5 = 57.8",
+      "note": "Matches Trek's published 58 mm; the published value is used in geometry.trail."
+    },
+    {
+      "field": "top_tube_actual",
+      "value": 544.2,
+      "formula": "sqrt((reach + seat_tube_length_ct*cos(STA))^2 + (stack - seat_tube_length_ct*sin(STA))^2) = sqrt((387 + 153.2)^2 + (577 - 510.5)^2) = 544.2",
+      "note": "Centre-to-centre distance from seat-tube top to head-tube top (industry convention for an unpublished actual top tube); +/-6 mm depending on where the TT joins the head tube."
+    },
+    {
+      "field": "tire_outer_diameter",
+      "value": 672,
+      "formula": "etrto_bead_seat_diameter + 2*tire_width = 622 + 50 = 672",
+      "note": "Nominal ETRTO diameter; a 25 mm tyre on a 20 mm inner rim measures slightly larger (~675)."
+    },
+    {
+      "field": "fork_axle_to_crown",
+      "value": 370.6,
+      "formula": "distance along the steering axis from head-tube bottom to the axle: t = (stack + rake*cos(HTA) - bb_drop)/sin(HTA) = 540.6 from the head-tube top, minus head_tube_length 170 = 370.6",
+      "note": "Trek does not publish axle-to-crown; this is the value implied by stack/reach/HTA/rake/wheel position. Consistent with a 370-372 mm road fork."
+    },
+    {
+      "field": "frame closure check (rake)",
+      "value": 44.2,
+      "formula": "perpendicular offset of the axle from the steering axis = (front_center - reach)*sin(HTA) + (bb_drop - stack)*cos(HTA) = 44.2",
+      "note": "Trek's chart does not close exactly: published rake 40 with front centre 583 needs 44.2. Hold wheelbase/chainstay/front centre and use 43-44 mm rake (or keep 40 and accept a 4 mm shorter front centre / 979 mm wheelbase)."
+    },
+    {
+      "field": "bottom bracket height (ground)",
+      "value": 266.0,
+      "formula": "tire_outer_diameter/2 - bb_drop = 336 - 70 = 266",
+      "note": "Reference for placing the frame relative to the ground plane in CAD."
+    }
+  ]
+}
