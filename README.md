@@ -1,83 +1,103 @@
-# Émonda 56 · a bicycle, every part, in one HTML
+# Émonda 56
 
-`index.html` is the deliverable: a single file, no network, no server. It contains the whole
-model (5.2 MB of packed B-rep tessellation), three.js, the Rapier physics kernel, the parts
-panel, the explode view and the spec sheet.
+**A bicycle, every part, as one HTML page.** 111 parts modelled from a real 56 cm road bike's
+geometry with [@classcad/smlibpy-three](https://www.npmjs.com/package/@classcad/smlibpy-three) on
+the SMLib kernel, packed with three.js and Rapier into a single file that opens offline.
 
-It is served from GitHub Pages at <https://jimlah.github.io/>. The same file is kept locally as
-`bicycle.html`.
+## See it
 
-Open it in a browser and drag to orbit. `SPEC` shows the geometry and the sources every number
-came from. `RIDE` starts the physics: W pedals, S back-pedals, A/D steer, Space brakes, R resets,
-`ASSIST` turns the rider's balance off so the bike falls over and lands on its own colliders.
+Everything is published to GitHub Pages. No server, no build step, just open the link:
 
-## What is in the model
+|                               |                                                          |
+| ----------------------------- | -------------------------------------------------------- |
+| **The model**                 | <https://jimlah.github.io/bicycle/>                      |
+| The generator, in this repo   | [`build/`](./build)                                      |
+| Every dimension, with its URL | [`build/specs.json`](./build/specs.json)                 |
+| The part list and the masses  | the left rail in the page                                |
 
-111 parts, 375k triangles, 11.0 kg modelled mass, 111 convex colliders.
+![The model, as the page opens](docs/previews/hero.png)
 
-| assembly | parts | what |
-|---|---|---|
-| Frame | 1 | welded steel body: hollow butted tubes, BB shell, dropouts, bridges, bottle bosses, cable stops, mech hanger, seat collar |
-| Fork | 9 | steerer, crown, two raked blades, dropouts, crown race, lower headset cup and bearing |
-| Wheels | 21 | rims (hollow 25 mm section, 622 BSD), 25-622 tyres, hubs, axles with Ø9 bore, cartridge bearings, 32 three-cross spokes per wheel with nipples, Presta valves, quick releases, freehub |
-| Drivetrain | 46 | BSA 68 bottom bracket, 172.5 mm hollow-forged cranks, 50/34 chainrings with real teeth, chainring bolts, platform pedals, 11-32 cassette on its carrier and spacers, 116-link chain on its own path, rear derailleur with parallelogram, cage and two 11 t jockeys, front derailleur, STI levers |
-| Cockpit | 15 | one-sweep 420 mm drop bar, 100 mm stem with faceplate and bolts, upper headset, spacers, top cap, Ø27.2 seatpost with 2-bolt clamp, 272 x 143 saddle over rails |
-| Brakes | 12 | two dual-pivot rim calipers with pads, springs and hardware, housing and inner cables, levers |
-| Finishing | 7 | bottle cage and 750 ml bottle, seat binder, bar end plugs, reflector, chainstay protector |
+## What this is
 
-Dimensions come from a real bike, not from taste: a 56 cm Trek Émonda SL rim-brake frameset
-(wheelbase 983, stack 577, reach 387, 73.3/73.5 degrees, 410 chainstay, 40 mm rake, 57.8 mm trail),
-Shimano 105 R7000 groupset, DT Swiss PR 1600 class rim, 25-622 tyres. `build/specs.json` holds
-every value with its source URL, and the spec sheet in the page lists them.
+- **A real bike, not a shape.** Wheelbase 983, stack 577, reach 387, 73.3 and 73.5 degree angles,
+  410 mm chainstay, 40 mm rake, 57.8 mm trail, from a Trek Émonda SL rim-brake frameset. The
+  components are a Shimano 105 R7000 group, a DT Swiss PR 1600 class rim and 25-622 tyres, so the
+  chainring teeth and the chain's pitch radius agree by construction.
+- **One file, offline.** The geometry is 5.2 MB quantised to 16 bit positions and 8 bit normals,
+  gzipped, and inlined with three.js and Rapier. Opening the page makes zero network requests.
+- **It rides.** The bike is one rigid body with a convex hull collider per part and the mass its
+  own B-rep volume gives it. Pedal and it accelerates, brake and it stops, steer and the front end
+  turns about the head tube, turn the assist off and it falls over and lands on its colliders.
 
-## How it is built
+|                                         |
+| --------------------------------------- |
+| ![Side](docs/previews/side.png)         |
+| ![Exploded](docs/previews/exploded.png) |
+| ![Riding](docs/previews/ride.png)       |
+| ![Specifications](docs/previews/specs.png) |
 
-`build/` is the generator. Everything is modelled with `@classcad/smlibpy-three` 0.6.2, whose
-parts are exact B-reps and three.js meshes at once.
+## What is in it
 
-```
-build/lib/bike.mjs        the layout: every axle, angle and tube axis, solved from the spec
-build/lib/geo.mjs         tubes, laths, sprockets, swept tubes, placements
-build/lib/solid.mjs       lofts, fillet fallbacks
-build/parts/frame.mjs     the frame
-build/parts/fork.mjs      the fork            build/parts/wheels.mjs    both wheels
-build/parts/drivetrain.mjs                   build/parts/cockpit.mjs
-build/parts/brakes.mjs    build/parts/finishing.mjs
-build/lib/assemble.mjs    the part registry, masses, explode vectors, envelope checks
-build/pack.mjs            quantise, gzip, inline everything, write bicycle.html
-build/viewer/app.js       the viewer (orbit, parts, explode, spec, dimensions, PNG)
-build/viewer/physics.js   the ride (Rapier body, colliders, wheels, chain, steering)
-build/verify.mjs, test-ride.mjs, final-check.mjs   headless Chrome checks
-```
+111 parts, 374,916 triangles, 10.99 kg modelled mass.
 
-Regenerate:
+| assembly   | parts | what                                                                                                                                                       |
+| ---------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Frame      | 1     | welded steel body, hollow butted tubes, BB shell, dropouts, stays, bridges, bottle bosses, cable stops, mech hanger, collar                                  |
+| Fork       | 9     | steerer, crown, two raked blades, dropouts, crown race, lower headset cup and bearing                                                                       |
+| Wheels     | 21    | hollow 25 mm rims on a 622 bead seat, 25-622 tyres, hubs, axles, bearings, 32 three-cross spokes and nipples per wheel, valves, quick releases, freehub       |
+| Drivetrain | 46    | BSA 68 bottom bracket, 172.5 mm hollow cranks, 50/34 rings, chainring bolts, pedals, 11-32 cassette, 116 link chain, both derailleurs, STI levers             |
+| Cockpit    | 15    | one-sweep 420 mm drop bar, 100 mm stem with faceplate, upper headset and spacers, Ø27.2 seatpost, 272 x 143 saddle over rails                                |
+| Brakes     | 12    | two dual-pivot rim calipers, pads, springs, housing, inner cables, levers                                                                                    |
+| Finishing  | 7     | bottle cage and bottle, seat binder, bar end plugs, reflector, chainstay protector                                                                           |
+
+## Ride it
+
+Press `RIDE`. Then `W` pedals, `S` back-pedals, `A` and `D` steer, `Space` brakes, `R` resets, and
+`ASSIST` turns the rider's balance off so you can watch it topple.
+
+Outside ride mode, drag to orbit, click a part to read its dimensions and mass, drag the explode
+slider to pull the build apart, and `SPEC` opens the geometry sheet with the source for every
+number.
+
+## Run it locally
+
+Open `index.html`. That is the whole thing. There is nothing to install.
+
+## Rebuild it
+
+`build/` is the generator. Every part is an exact B-rep and a three.js mesh at once, so a part
+module runs on its own and renders a picture:
 
 ```bash
 cd build
-node pack.mjs            # ~6 min: builds every part, tessellates, packs the page
-node rebuild-code.mjs    # fast: splices viewer code into the packed page, keeps the data
-node test-ride.mjs       # rides the bike in headless Chrome and prints speed/brake/steer
-node final-check.mjs     # screenshots: iso, side, explode, selection, spec sheet
+npm install
+node parts/wheels.mjs     # one assembly, with a PNG and a mass table
+node pack.mjs             # every part, tessellated, quantised and packed into ../index.html
+node previews.mjs         # the screenshots in this README
+node test-ride.mjs        # rides it in headless Chrome and prints speed, brake and steer
 ```
 
-`pack.mjs` prints the part count, triangle count and packed size. Every part module also runs on
-its own (`node parts/wheels.mjs`) and renders a PNG for inspection.
+`pack.mjs` prints the part count, the triangle count and the packed size. It takes about six
+minutes, most of it the kernel tessellating 111 bodies.
 
-## Physics
+## The physics, briefly
 
-The bike is one rigid body that carries a convex-hull collider per part, each with the mass the
-B-rep volume gives it, so it weighs 11.0 kg and falls under gravity onto its tyres. The wheels,
-cranks, pedals, steering and chain are articulated on top of that body: the wheels turn by the
-distance travelled, the cranks by cadence, the pedals stay level, the front end turns about the
-head tube axis, and the chain's 116 links run along the path the drivetrain modelled, at the
-speed the chainring asks for. Braking scrubs both wheels; with `ASSIST` off nothing holds the
-bike up and it topples.
+The first version put a revolute joint at every axle. A driven wheel barely turned: measured in a
+synchronous 600 step run, 0.007 rad/s on the rear wheel with drive torque applied, and a jointed
+wheel in isolation spun 48 times slower than a free one. The joints went. The bike is now one rigid
+body carrying a collider per part, and the wheels, cranks, pedals, steering and chain are
+articulated on top of it. Measured, 12.3 km/h after one second of pedalling, 28.4 km/h after five,
+2.9 km/h after two seconds of braking.
 
-## Known simplifications
+## Limits
 
-Tube joints are mitered unions without blend fillets: the kernel refuses to round a welded
-junction, and a sharp seam reads as a weld at this scale. Bearing balls, thread forms, cable
-inner strands and gear tooth involutes are simplified. Hollow or foam parts (saddle padding,
-cable housing) carry an effective density so the mass readout matches the real part. The frame
-is drawn as a welded steel frame though the donor bike is carbon; masses follow the geometry, not
-a catalogue.
+Tube joints are mitered unions without blend fillets, because the kernel refuses to round a welded
+junction and a sharp seam reads as a weld at this scale. Bearing balls, thread forms, cable strands
+and gear tooth involutes are simplified. Hollow and foam parts carry an effective density so the
+mass readout matches the real part. The frame is drawn as welded steel although the donor bike is
+carbon, and the masses follow the geometry rather than a catalogue.
+
+## Built with
+
+[smlibpy](https://smlibpy.classcad.ch/) (MIT, the SMLib kernel), [three.js](https://threejs.org/)
+(MIT) and [Rapier](https://rapier.rs/) (Apache 2.0).

@@ -1,0 +1,46 @@
+# The page, published so anyone can open it: https://jimlah.github.io/bicycle/
+#
+# There is no build step. `index.html` is the whole site — the model, three.js and the
+# physics kernel are inlined, so the file is the deployment. The job copies it into
+# `_site/` with the preview images, which keeps the generator in `build/` in the
+# repository but out of the published site.
+name: Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Publish the page
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Assemble the site
+        run: |
+          mkdir -p _site
+          cp index.html _site/index.html
+          cp -r docs/previews _site/previews
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deploy
+        uses: actions/deploy-pages@v4
